@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+  <title>Welcome Page for CS 493 Assignment 6</title>
+  <link rel="stylesheet" type="text/css"
+      href="{{url_for('static', filename='bootstrap.css')}}">
+</head>
+<body>
+  <div class="container-fluid">
+    <h1> This is the Welcome Page for CS 493 Final Project </h1>
+    {% if authURL %}
+    <a href='{{ authURL }}'> Authenticate through Google to Create or Login to an account</a>
+    {% endif %}
+  </div>
+  
+</body>
+

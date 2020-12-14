@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+  <title>User Info</title>
+  <link rel="stylesheet" type="text/css"
+      href="{{url_for('static', filename='bootstrap.css')}}">
+</head>
+<body>
+  <div class="container-fluid"></div>
+    <h1> This is the User Info Page for CS 493 Final Project </h1>
+
+    {% if JWT %}
+      {% if newUserCreated=="true" %}
+        <h4>A new account has been created for this user</h4>
+      {% elif newUserCreated=="false" %}
+        <h4> Welcome back! Your account already exists </h4>
+      {% endif %}
+      <h5> Your Unique User ID is: {{ JWTsub }} </h5>
+      <h5> User's JWT: {{ JWT }} </h5>
+    {% endif %}
+  </div>
+</body>
+

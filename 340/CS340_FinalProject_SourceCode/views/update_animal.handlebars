@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Update Animal Admin</title>
+	
+	<!-- SOURCE FOR DATA TABLE FILES : https://datatables.net/examples/styling/bootstrap4 -->
+	
+    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- NEED THIS TO AVOID GET CSS ERROR-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">	
+	
+  </head>
+  
+<body>
+
+    <div class=" container col-lg-3"></div>
+
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-sm">
+		<h3>Update Animal  </h3> </div> 
+		</div> 
+		</div>
+		<br>
+		
+		
+	<div class="container">
+		  <div class="row">
+			<div class="col-sm">
+			
+
+		<form id = "update_animal" action="/animal" method="post">
+
+				  <div class="form-group">
+					<label for="animalName">Name</label>
+					<input type="text" class="form-control" id="id_animalNameUpdate" name = "nm_animalNameUpdate" value = "{{animal.NAME}}">
+				  </div>
+
+				  <div class="form-group">
+					<label for="animalAge">Age (years)</label>
+					<input type="number" class="form-control" id="id_animalAgeUpdate" name = "nm_animalAgeUpdate" value = "{{animal.AGE}}">
+				  </div>
+
+				  <div class="form-group">
+					<label for="animalWeight">Weight (lbs)</label>
+					<input type="number" class="form-control" id="id_animalWeightUpdate" name = "nm_animalWeightUpdate" value = "{{animal.WEIGHT}}">
+				  </div>
+
+				  <div class="form-group">
+					<label for="animalZip">Zip Code </label>
+				   <!--<input type="text" class="form-control" id="id_animalZipAdd" name = "nm_animalZipAdd"  placeholder="97035">-->
+					   <select class="form-control" id="id_animalZipUpdate" name = "nm_animalZipUpdate" >
+						
+						{{#each zip_codes}}
+							   <option value = "{{LOCATION_ID}}"> {{ZIP_CODE}}</option>
+						 {{/each}}
+					   </select>
+				  </div>
+
+				  <div class="form-group">
+					<label for="Species">Species</label>
+					
+					<select class="form-control" id="id_animalSpeciesUpdate" name = "nm_animalSpeciesUpdate" >
+				
+					 {{#each species_names}}
+						   <option value = "{{SPECIES_ID}}"> {{SPECIES_NAME}}</option>
+					 {{/each}}
+					</select>
+					
+				  </div>
+				  
+				  <div class="form-group">
+						<input type="hidden" name = "nm_animalPostType" value = "UPDATE">
+				   </div>
+
+				  <button  class="btn btn-primary"  onclick="updateAnimal({{animal.ANIMAL_ID}})">Update Animal</button>
+
+		 
+
+				</form>
+				<!--</form>-->
+			</div>
+		</div>
+	</div>
+	
+	    <div class=" container col-lg-3">
+    </div>
+	
+
+	 
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	  
+	  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>	  
+	  
+	  
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		
+	</body>
+	
+	<script defer>select_zipCode_speciesName({{animal.SPECIES_ID}}, {{animal.LOCATION_ID}});</script>
+
+</html>
